@@ -1,13 +1,14 @@
 package com.tourpackage.tourservice.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.tourpackage.tourservice.models.Tour;
 import com.tourpackage.tourservice.repository.TourRepository;
 
-@Service 
+@Service
 public class TourService {
 
     private final TourRepository tourRepository;
@@ -25,12 +26,19 @@ public class TourService {
     }
 
     public Tour getTourById(Long id) {
-        return tourRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Tour not found with id " + id));
+        Tour tour;
+        try {
+            tour = tourRepository.findById(id).get();
+            if (tour == null)
+                return null; // or throw an exception
+            else
+                return tour;
+        } catch (Exception e) {
+            return null; // or throw an exception
+        }
     }
 
     public List<Tour> getToursByLocation(String location) {
         return tourRepository.findByLocationIgnoreCase(location);
     }
 }
-
