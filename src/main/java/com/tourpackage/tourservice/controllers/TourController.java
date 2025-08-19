@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tourpackage.tourservice.models.Tour;
 import com.tourpackage.tourservice.service.TourService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/tours")
+@Tag(name = "Tours", description = "Tour Packages APIs")
 public class TourController {
 
     private final TourService tourService;
@@ -24,12 +28,14 @@ public class TourController {
     }
 
     // 1. Create Tour
+    @Operation(summary = "Create a new Tour")
     @PostMapping
     public Tour createTour(@RequestBody Tour tour) {
         return tourService.createTour(tour);
     }
 
     // 2. List All Tours OR By Location
+    @Operation(summary = "Get all Tours or filter by location")
     @GetMapping
     public List<Tour> getAllTours(@RequestParam(required = false) String location) {
         if (location != null) {
@@ -39,6 +45,7 @@ public class TourController {
     }
 
     // 3. Get Tour by ID
+    @Operation(summary = "Get Tour by ID")
     @GetMapping("/{id}")
     public Tour getTourById(@PathVariable Long id) {
         return tourService.getTourById(id);
