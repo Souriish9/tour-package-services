@@ -29,7 +29,7 @@ public class TourController {
         return tourService.createTour(tour);
     }
 
-    // 2. List All Tours
+    // 2. List All Tours OR By Location
     @GetMapping
     public List<Tour> getAllTours(@RequestParam(required = false) String location) {
         if (location != null) {
@@ -43,14 +43,4 @@ public class TourController {
     public Tour getTourById(@PathVariable Long id) {
         return tourService.getTourById(id);
     }
-
-    // 4. Get Tours by Location
-    @GetMapping
-    public List<Tour> getTours(@RequestParam(required = false) String location) {
-        if (location != null) {
-            return tourService.getToursByLocation(location);
-        }
-        return tourService.getAllTours();
-    }
-
 }
