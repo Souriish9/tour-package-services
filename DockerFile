@@ -1,0 +1,4 @@
+FROM openjdk:17
+EXPOSE 8081
+ADD target/tour-package-service.jar tour-package-service-spb.jar
+ENTRYPOINT [ "java", "-jar", "tour-package-service-spb.jar"]

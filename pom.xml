@@ -99,6 +99,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>tour-package-service</finalName>
 	</build>
 
 </project>
