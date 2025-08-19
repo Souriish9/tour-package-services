@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "016501b1-a2e1-4e6c-b3ae-64a025b93e42",
+		"name": "Tour-Package-Services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20813615"
+	},
+	"item": [
+		{
+			"name": "CREATE Tour",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"image\": \"https://images.unsplash.com/photo-1598275277521-1885382d523a\",\n  \"discountInPercentage\": \"17%\",\n  \"title\": \"Himalayan Trek Adventure\",\n  \"description\": \"14-day trek through the Himalayas\",\n  \"duration\": \"14Days/13Nights\",\n  \"actualPrice\": \"$1200\",\n  \"discountedPrice\": \"$1000\",\n  \"location\": \"Leh\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/tours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"tours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Tours",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/tours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"tours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All By Tours Location",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"image\": \"https://images.unsplash.com/photo-1598275277521-1885382d523a\",\n  \"discountInPercentage\": \"17%\",\n  \"title\": \"Himalayan Trek Adventure\",\n  \"description\": \"14-day trek through the Himalayas\",\n  \"duration\": \"14Days/13Nights\",\n  \"actualPrice\": \"$1200\",\n  \"discountedPrice\": \"$1000\",\n  \"location\": \"Leh\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/tours?location=WB",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"tours"
+					],
+					"query": [
+						{
+							"key": "location",
+							"value": "WB"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Tour By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/tours/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"tours",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
